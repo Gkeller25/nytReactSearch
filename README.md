@@ -11,7 +11,7 @@ This app has been designed to allow the user to search the New York Times databa
 * Javascript JSX
 
 
-![Gif of Memory default](memory.gif)
+![Gif of NYT default](NYT.gif)
 
 #Future Features
 
