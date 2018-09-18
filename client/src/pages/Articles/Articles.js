@@ -32,10 +32,15 @@ class Articles extends Component {
   searchArticles = query => {
 
     API.search(query)
-      .then(res => this.setState({
-        results: res.data.response.docs,
-        search: "", startDate: "", endDate: ""
-      }))
+      .then(res => {
+        console.log(this.state)
+        this.setState({
+          results: res.data.response.docs,
+          search: "", startDate: "", endDate: ""
+        })
+        console.log(this.state)
+       }
+      )
       .catch(err => console.log(err));
 
   };
@@ -66,8 +71,10 @@ class Articles extends Component {
     });
   };
 
-  _onChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value })
+  _onChange = (event) => {
+    event.preventDefault();
+    this.setState({ [event.target.name]: event.target.value })
+    //this.handleInputChange(event);
   }
 
   saveArticles = result => {
@@ -97,12 +104,12 @@ class Articles extends Component {
               />
               <div className="form-group">
                 <label>Start Date:
-                <MaskedInput className="form-control" mask="1111/11/11" name="startDate" placeholder="YYYY/MM/DD" onChange={this._onChange} />
+                <MaskedInput className="form-control" value={this.state.startDate} mask="1111/11/11" name="startDate" placeholder="YYYY/MM/DD" onChange={this._onChange} />
                 </label>
               </div>
               <div className="form-group">
                 <label>End Date:
-                <MaskedInput className="form-control" mask="1111/11/11" name="endDate" placeholder="YYYY/MM/DD" onChange={this._onChange} />
+                <MaskedInput className="form-control" value={this.state.endDate} mask="1111/11/11" name="endDate" placeholder="YYYY/MM/DD" onChange={this._onChange} />
                 </label>
               </div>
               <FormBtn
