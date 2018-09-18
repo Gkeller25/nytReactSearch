@@ -3,9 +3,9 @@ import React from "react";
 export const ListItem = props => (
   <div className="card">
   <ul className="list-group">
-        <span className="delete-btn" onClick={() => props.deleteArticle(props.id)}>
-          ✗
-        </span>
+        <button className="btn btn-primary" onClick={() => props.deleteArticle(props.id)}>
+        Delete
+        </button>
         <li className="list-group-item">
           <strong>Title:</strong> {props.title}
         </li>
@@ -13,7 +13,9 @@ export const ListItem = props => (
           <strong>Date:</strong> {props.date}
         </li>
         <li className="list-group-item">
-          <strong>URL:</strong> {props.url}
+          <a href={props.url}><strong>URL: </strong>{props.url}
+          </a>
+          
         </li>
       </ul>
       </div>
